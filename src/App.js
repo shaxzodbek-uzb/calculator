@@ -49,7 +49,7 @@ function App() {
         else if (button.title === 'del'){
           // Delete button  
           let res = numberStream.value;
-          if (res.length === 1 || (res.length == 2 && res[0] === '-'))
+          if (res.length === 1 || (res.length === 2 && res[0] === '-'))
             res = '0';
           else
             res =  res.substring(0, res.length - 1);

@@ -1,4 +1,6 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
-
-import Aoo from './App';
+import { shallow } from 'enzyme';
+import App from './App';
+it('calculator is working', () => {
+  shallow(<App />);
+});
