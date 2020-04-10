@@ -33,7 +33,7 @@ body {
 }
 .navigation{
   display: flex;
-  height: 30px;
+  height: 50px;
   justify-content: space-between;
   flex-direction: row;
   margin-left: 10px;

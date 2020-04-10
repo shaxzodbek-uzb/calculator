@@ -3,7 +3,7 @@ import ControllerPanel from './ControllerPanel';
 import InputArea from './InputArea';
 import Navigation from './Navigation'
 export default function Calculator() {
-    let [numberStream, setNumberStream] = useState({
+      let [numberStream, setNumberStream] = useState({
         value: '0'
       })
       let [calculationStream, setCalculationStream] = useState({
@@ -37,7 +37,14 @@ export default function Calculator() {
         };
         fetch('http://localhost:3001/calculations', requestOptions);
       }
-      function onButtonClick(button) {
+      function onButtonClick(title) {
+          let button = {
+            title: title,
+            type: 'function'
+          };
+          if ('0' <= title && title <= '9')
+            button.type = 'number';
+
           if(button.type === 'number') {
             Numberbtn(button);
           }
@@ -73,7 +80,7 @@ export default function Calculator() {
               try {
                 let v = addNumber();
                 const evalResult = eval(v);
-                const result = Number.isInteger(evalResult)? evalResult : evalResult.toFixed(9);
+                const result = Number.isInteger(evalResult)? String(evalResult) : String(evalResult.toFixed(9));
                 setNumberStream({ ...numberStream, value: result});
                 setCalculationStream({ ...calculationStream, value: v + '='});
                 saveCalculation({

@@ -13,8 +13,12 @@ module.exports = {
                 '@babel/preset-react'
             ],
             plugins: [
+
                 '@babel/plugin-syntax-dynamic-import',
-                '@babel/plugin-proposal-class-properties'
+                '@babel/plugin-proposal-class-properties',
+                'babel-plugin-syntax-async-functions',
+                '@babel/plugin-transform-async-to-generator',
+                '@babel/plugin-transform-runtime'
             ]
         },
         production: {

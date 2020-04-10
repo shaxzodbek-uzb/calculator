@@ -1,5 +1,9 @@
 {
   "calculations": [
-
+    {
+      "equation": "9*6=",
+      "result": 54,
+      "id": 1
+    }
   ]
 }
