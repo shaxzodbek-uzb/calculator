@@ -29,6 +29,14 @@ export default function Calculator() {
               v = numberStream.value + button.title;
             setNumberStream({ ...numberStream, value: v})
       }
+      let saveCalculation = async ({equation, result}) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ equation: equation, result: result })
+        };
+        fetch('http://localhost:3001/calculations', requestOptions);
+      }
       function onButtonClick(button) {
           if(button.type === 'number') {
             Numberbtn(button);
@@ -68,6 +76,10 @@ export default function Calculator() {
                 const result = Number.isInteger(evalResult)? evalResult : evalResult.toFixed(9);
                 setNumberStream({ ...numberStream, value: result});
                 setCalculationStream({ ...calculationStream, value: v + '='});
+                saveCalculation({
+                    equation: v + '=',
+                    result: result
+                });
               } catch (error) {
                 alert('Invalid Mathematical Equation');
               }

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import HistoryPanel from './HistoryPanel';
 import HistoryButton from './HistoryButton';
 import MenuButton from './MenuButton';
+import Fade from "./Fade";
 
 export default function Navigation() {
     let [historyPanel, setStateHistoryPanel] = useState({show: false})
@@ -18,7 +19,9 @@ export default function Navigation() {
                 <MenuButton />
                 <HistoryButton onClick={showHistory} />
             </div>
-            { historyPanel.show?<HistoryPanel onClick={hideHistory} />: null}  
+            <Fade show={historyPanel.show}>
+                <HistoryPanel onClick={hideHistory} />
+            </Fade>
         </div>
     );
 }
